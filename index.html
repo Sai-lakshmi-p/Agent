@@ -1,0 +1,33 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Salesoforce D5 Agent</title>
+</head>
+<body>
+ 
+  <script type="text/javascript">
+    function initEmbeddedMessaging() {
+      try {
+        embeddedservice_bootstrap.settings.language = 'en_US'; // You can set language
+ 
+        embeddedservice_bootstrap.init(
+          '00DgK000002UgS5', // Salesforce Org ID
+          'D5Agent', // Bot Name
+          'https://orgfarm-3c513ce6ec-dev-ed.develop.my.site.com/ESWD5Agent1749466908141', // Experience Cloud site
+          {
+            scrt2URL: 'https://orgfarm-3c513ce6ec-dev-ed.develop.my.salesforce-scrt.com'
+          }
+        );
+      } catch (err) {
+        console.error('Error loading Embedded Messaging: ', err);
+      }
+    }
+</script>
+ 
+  <script type="text/javascript"
+          src="https://orgfarm-3c513ce6ec-dev-ed.develop.my.site.com/ESWD5Agent1749466908141/assets/js/bootstrap.min.js"
+          onload="initEmbeddedMessaging()"></script>
+</body>
+</html>
