@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat Bot Launcher</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+    }
+    #chatbox {
+      display: none;
+      border: 1px solid #ccc;
+      padding: 10px;
+      width: 300px;
+      height: 300px;
+      position: fixed;
+      bottom: 50px;
+      right: 50px;
+      background: #f9f9f9;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to the Chat Bot Launcher</h1>
+  <button onclick="launchBot()">Launch Bot</button>
+
+  <div id="chatbox">
+    <h3>Bot Chat</h3>
+    <p>Hello! How can I help you today?</p>
+  </div>
+
+  <script>
+    function launchBot() {
+      document.getElementById('chatbox').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
