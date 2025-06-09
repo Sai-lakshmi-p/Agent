@@ -1,21 +1,76 @@
-<!-- public/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Salesoforce D5 Agent</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Salesforce D5 Agent</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #f3f4f6, #dbeafe);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #1f2937;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #4b5563;
+      margin-bottom: 2rem;
+    }
+
+    .launch-btn {
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+      transition: transform 0.2s ease;
+    }
+
+    .launch-btn:hover {
+      background-color: #1e40af;
+      transform: scale(1.05);
+    }
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      font-size: 0.9rem;
+      color: #9ca3af;
+    }
+  </style>
 </head>
 <body>
- 
+
+  <h1>Welcome to the D5 Virtual Assistant</h1>
+  <p>Need help? Click below to chat with our agent</p>
+  <button class="launch-btn" onclick="launchBot()">Launch Chat</button>
+
+  <footer>Powered by Salesforce Embedded Service • D5 Agent</footer>
+
+  <!-- Embedded Service Script -->
   <script type="text/javascript">
     function initEmbeddedMessaging() {
       try {
-        embeddedservice_bootstrap.settings.language = 'en_US'; // You can set language
- 
+        embeddedservice_bootstrap.settings.language = 'en_US';
+
         embeddedservice_bootstrap.init(
-          '00DgK000002UgS5', // Salesforce Org ID
+          '00DgK000002UgS5', // Org ID
           'D5Agent', // Bot Name
-          'https://orgfarm-3c513ce6ec-dev-ed.develop.my.site.com/ESWD5Agent1749466908141', // Experience Cloud site
+          'https://orgfarm-3c513ce6ec-dev-ed.develop.my.site.com/ESWD5Agent1749466908141', // Site Endpoint
           {
             scrt2URL: 'https://orgfarm-3c513ce6ec-dev-ed.develop.my.salesforce-scrt.com'
           }
@@ -24,10 +79,19 @@
         console.error('Error loading Embedded Messaging: ', err);
       }
     }
-</script>
- 
+
+    function launchBot() {
+      if (window.embeddedservice_bootstrap) {
+        initEmbeddedMessaging();
+      } else {
+        console.error('Embedded Service script not loaded yet');
+      }
+    }
+  </script>
+
   <script type="text/javascript"
-          src="https://orgfarm-3c513ce6ec-dev-ed.develop.my.site.com/ESWD5Agent1749466908141/assets/js/bootstrap.min.js"
-          onload="initEmbeddedMessaging()"></script>
+          src="https://orgfarm-3c513ce6ec-dev-ed.develop.my.site.com/ESWD5Agent1749466908141/assets/js/bootstrap.min.js">
+  </script>
+
 </body>
 </html>
